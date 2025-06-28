@@ -4,7 +4,7 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Copy the JAR file from your local machine to the container
-COPY target/myapp.jar /app/spring-boot.jar
+COPY target/ /app/spring-boot.jar
 
 # Expose the port the application runs on
 EXPOSE 8080
