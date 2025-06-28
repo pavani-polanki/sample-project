@@ -1,0 +1,35 @@
+apiversion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: springboot
+  template:
+    metadata:
+      labels:
+        app: springboot
+    spec:
+      containers:
+        - name: spring-boot
+          image: sampletest1.azurecr.io/spring-boot:latest
+          ports:
+            - containerPort: 8080
+
+
+
+---
+apiversion: apps/v1
+kind: Service
+metadata:
+  name: springboot-svc
+spec:
+  type: LoadBalancer
+  selector:
+    app: spring-boot
+  ports:
+    - protocal: TCP
+      port: 80
+      targetport: 8080
